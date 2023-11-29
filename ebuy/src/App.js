@@ -1,10 +1,13 @@
+import React from 'react';
+import ProductList, { Product } from './features/counter/ProductList';
 import './App.css';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <>
-      <h1>Hello MERN</h1>
-    </>
+    <div className="App">
+      <Home />
+    </div>
   );
 }
 
