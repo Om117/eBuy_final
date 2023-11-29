@@ -1,6 +1,0 @@
-Redux Toolkit with Async Thunk
-Authentication via Passport JS
-REST API auth via Passport JWT
-Email via Nodemailer (GMAIL)
-Mongoose Models/Populate
-Model View Controller on backend
