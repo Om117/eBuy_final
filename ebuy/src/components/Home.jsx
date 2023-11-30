@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../features/navbar/Navbar";
+import Navbar from "./Navbar";
 import ProductList from "../features/counter/ProductList";
 
 function Home() {
