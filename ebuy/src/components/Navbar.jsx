@@ -17,9 +17,9 @@ function Navbar({ children }) {
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   };
   const navigation = [
-    { name: "Home", href: "#", current: false },
-    { name: "Trending", href: "#", current: false },
-    { name: "Complaints", href: "#", current: false },
+    { name: "Home", to: "/", current: false },
+    { name: "Trending", to: "/", current: false },
+    { name: "Complaints", to: "/", current: false },
   ];
   const userNavigation = [
     { name: "Your Profile", href: "#" },
@@ -41,18 +41,20 @@ function Navbar({ children }) {
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <img
-                        className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
-                      />
+                      <Link to="/">
+                        <img
+                          className="h-8 w-8"
+                          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                          alt="Your Company"
+                        />
+                      </Link>
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
                         {navigation.map((item) => (
-                          <a
+                          <Link
                             key={item.name}
-                            href={item.href}
+                            to={item.to}
                             className={classNames(
                               item.current
                                 ? "bg-gray-900 text-white"
@@ -62,7 +64,7 @@ function Navbar({ children }) {
                             aria-current={item.current ? "page" : undefined}
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
