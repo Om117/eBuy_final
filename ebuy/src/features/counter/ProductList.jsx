@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  // increment,
-  // incrementAsync,
-  selectCount,
-} from "./ProductListSlice";
+import { selectAllProducts, fetchAllProductsAsync } from "./ProductListSlice";
 
 // Other filters Code tailwindcss starts
 import { Link } from "react-router-dom";
@@ -12,7 +8,7 @@ import { Link } from "react-router-dom";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { Fragment } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { StarIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
   ChevronDownIcon,
   FunnelIcon,
@@ -23,53 +19,12 @@ import {
 // Other filters Code tailwindcss ends
 
 export default function ProductList() {
-  const count = useSelector(selectCount);
   const dispatch = useDispatch();
-
-  const products = [
-    {
-      id: 1,
-      name: "Basic Tee",
-      href: "#",
-      imageSrc:
-        "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-      imageAlt: "Front of men's Basic Tee in black.",
-      price: "$35",
-      color: "Black",
-    },
-    {
-      id: 2,
-      name: "Basic Tee",
-      href: "#",
-      imageSrc:
-        "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
-      imageAlt: "Front of men's Basic Tee in black.",
-      price: "$39",
-      color: "White",
-    },
-    {
-      id: 3,
-      name: "Basic Tee",
-      href: "#",
-      imageSrc:
-        "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
-      imageAlt: "Front of men's Basic Tee in black.",
-      price: "$52",
-      color: "Gray",
-    },
-    {
-      id: 4,
-      name: "Basic Tee",
-      href: "#",
-      imageSrc:
-        "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
-      imageAlt: "Front of men's Basic Tee in black.",
-      price: "$42",
-      color: "Color",
-    },
-  ];
+  const products = useSelector(selectAllProducts);
   // Other filters Code tailwindcss starts
-
+  useEffect(() => {
+    dispatch(fetchAllProductsAsync);
+  }, [dispatch]);
   const sortOptions = [
     { name: "Most Popular", href: "#", current: true },
     { name: "Best Rating", href: "#", current: false },
@@ -397,8 +352,8 @@ export default function ProductList() {
                               <div key={product.id} className="group relative">
                                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                   <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
+                                    src={product.thumbnail}
+                                    alt={product.title}
                                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                   />
                                 </div>
@@ -410,11 +365,12 @@ export default function ProductList() {
                                           aria-hidden="true"
                                           className="absolute inset-0"
                                         />
-                                        {product.name}
+                                        {product.title}
                                       </a>
                                     </h3>
                                     <p className="mt-1 text-sm text-gray-500">
-                                      {product.color}
+                                      <StarIcon className="w-5 h-5 inline" />
+                                      {product.rating}
                                     </p>
                                   </div>
                                   <p className="text-sm font-medium text-gray-900">
