@@ -1,5 +1,7 @@
 import { Children, Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+import logo from "../images/eBuyNav.png";
+
 import {
   Bars3Icon,
   ShoppingCartIcon,
@@ -43,8 +45,8 @@ function Navbar({ children }) {
                     <div className="flex-shrink-0">
                       <Link to="/">
                         <img
-                          className="h-8 w-8"
-                          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                          className="h-12 w-12"
+                          src={logo}
                           alt="Your Company"
                         />
                       </Link>

@@ -46,7 +46,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App">
+    <div >
       {/* <LoginPage /> */}
       <RouterProvider router={router} />
       {/* <SignupPage /> */}
