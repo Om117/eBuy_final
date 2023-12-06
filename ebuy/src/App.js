@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductList, { Product } from './features/counter/ProductList';
+// import ProductList, { Product } from './features/counter/ProductList';
 import './App.css';
 import Home from './components/Home';
 import LoginPage from './pages/LoginPage';
@@ -7,13 +7,13 @@ import SignupPage from './pages/SignupPage';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Link,
+  // Route,
+  // Link,
 } from "react-router-dom";
-import Cart from './features/cart/Cart';
+// import Cart from './features/cart/Cart';
 import CartPage from './pages/CartPage';
 import CheckOutPage from './pages/CheckOutPage';
-import ProductDetails from './features/counter/ProductDetails';
+// import ProductDetails from './features/counter/ProductDetails';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 
 const router = createBrowserRouter([
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     element: <CheckOutPage />,
   },
   {
-    path: "/product-details",
+    path: "/product-detail/:id",
     element: <ProductDetailsPage />,
   },
 ]);
