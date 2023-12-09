@@ -10,29 +10,32 @@ import {
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectItems } from "../features/cart/CartSlice";
 
+const user = {
+  name: "Tom Cook",
+  email: "tom@example.com",
+  imageUrl:
+    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+};
+const navigation = [
+  { name: "Home", to: "/", current: false },
+  { name: "Trending", to: "/", current: false },
+  { name: "Complaints", to: "/", current: false },
+];
+const userNavigation = [
+  { name: "Your Profile", link: "#" },
+  { name: "Your Faviorites", link: "#" },
+  { name: "Settings", link: "#" },
+  { name: "Sign out", link: "/login" },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 function Navbar({ children }) {
-  const user = {
-    name: "Tom Cook",
-    email: "tom@example.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  };
-  const navigation = [
-    { name: "Home", to: "/", current: false },
-    { name: "Trending", to: "/", current: false },
-    { name: "Complaints", to: "/", current: false },
-  ];
-  const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Your Faviorites", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
-  ];
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
+  const items = useSelector(selectItems);
   return (
     <>
       <div className="min-h-full">
@@ -85,7 +88,7 @@ function Navbar({ children }) {
                         </button>
                       </Link>
                       <span className="inline-flex items-center rounded-full  mb-7 -ml-2  bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                        3
+                        {items.length > 0 ? items.length : "0"}
                       </span>
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -113,15 +116,15 @@ function Navbar({ children }) {
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
-                                  <a
-                                    href={item.href}
+                                  <Link
+                                    to={item.link}
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
                                       "block px-4 py-2 text-sm text-gray-700"
                                     )}
                                   >
                                     {item.name}
-                                  </a>
+                                  </Link>
                                 )}
                               </Menu.Item>
                             ))}
@@ -199,7 +202,7 @@ function Navbar({ children }) {
                       </button>
                     </Link>
                     <span className="inline-flex items-center rounded-full mb-7 -ml-2 bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                      3
+                      {items.length > 0 ? items.length : "0"}
                     </span>
                   </div>
                   <div className="mt-3 space-y-1 px-2">

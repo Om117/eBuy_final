@@ -1,19 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  // increment,
-  // incrementAsync,
-  selectCount,
+  selectLoggedInUser,
+  createUserAsync,
 } from "../features/auth/AuthSlice";
+import { useForm } from "react-hook-form";
 
 function Signup() {
-  // const count = useSelector(selectCount);
   const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  // console.log(errors);
   return (
     <>
+      {user && <Navigate to="/" replace={true}></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Link to="/">
@@ -24,38 +30,81 @@ function Signup() {
             />
           </Link>
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Create your account
+            Create a New account
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form
+            noValidate
+            className="space-y-6"
+            onSubmit={handleSubmit((data) => {
+              dispatch(
+                createUserAsync({
+                  email: data.email,
+                  password: data.password,
+                  name: data.name,
+                })
+              );
+              console.log(data);
+            })}
+          >
             <div>
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor="Semail"
+                  htmlFor="name"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Email address
+                  Name
                 </label>
               </div>
 
               <div className="mt-2">
                 <input
-                  id="Semail"
-                  name="Semail"
-                  type="email"
-                  autoComplete="email"
-                  required
+                  id="name"
+                  name="name"
+                  {...register("name", { required: "Name is Required" })}
+                  type="text"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors.name && (
+                  <p className="text-red-500">{errors.name.message}</p>
+                )}
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Email address
+                </label>
+              </div>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  {...register("email", {
+                    required: "Email is Required",
+                    pattern: {
+                      value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                      message: "Email is Not valid",
+                    },
+                  })}
+                  type="email"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+                {errors.email && (
+                  <p className="text-red-500">{errors.email.message}</p>
+                )}
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor="Spassword"
+                  htmlFor="password"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Password
@@ -63,12 +112,17 @@ function Signup() {
               </div>
               <div className="mt-2">
                 <input
-                  id="Spassword"
-                  name="Spassword"
+                  id="password"
+                  name="password"
+                  {...register("password", {
+                    required: "Password is Required",
+                  })}
                   type="password"
-                  required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors.password && (
+                  <p className="text-red-500">{errors.password.message}</p>
+                )}
               </div>
             </div>
 
@@ -83,12 +137,22 @@ function Signup() {
               </div>
               <div className="mt-2">
                 <input
-                  id="confirm-password"
-                  name="confirm-password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  {...register("confirmPassword", {
+                    required: "Confirm Password is Required",
+                    validate: (value, formValues) =>
+                      value === formValues.password ||
+                      "password not matching!!",
+                  })}
                   type="password"
-                  required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors.confirmPassword && (
+                  <p className="text-red-500">
+                    {errors.confirmPassword.message}
+                  </p>
+                )}
               </div>
             </div>
             <div>
