@@ -7,36 +7,32 @@ import {
   selectItems,
   updateCartAsync,
 } from "../features/cart/CartSlice";
+import { useForm } from "react-hook-form";
+import {
+  checkUserAsync,
+  selectLoggedInUser,
+  updateUserAsync,
+} from "../features/auth/AuthSlice";
+import { createOrderAsync } from "../features/order/OrderSlice";
 
-const addresses = [
-  {
-    name: "Jhon Wick",
-    street: "11th main",
-    city: "Ahmedabad",
-    pinCode: 111100,
-    state: "Gujarat",
-    phone: 1212121212,
-  },
-  {
-    name: "Tony Stark",
-    street: "12th main",
-    city: "Baroda",
-    pinCode: 121100,
-    state: "Gujarat",
-    phone: 1515151515,
-  },
-];
 function CheckOutPage() {
   const dispatch = useDispatch();
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [open, setOpen] = useState(true);
-
+  const user = useSelector(selectLoggedInUser);
   const items = useSelector(selectItems);
   const totalAmount = items.reduce(
     (amount, item) => item.price * item.quantity + amount,
     0
   );
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
-
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState("card");
   const handleQuantity = (e, item) => {
     dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
   };
@@ -44,14 +40,37 @@ function CheckOutPage() {
   const handleRemove = (e, id) => {
     dispatch(deleteCartAsync(id));
   };
+  const handleOrder = (e) => {
+    const order = {
+      items,
+      totalAmount,
+      totalItems,
+      user,
+      selectedAddress,
+      paymentMethod,
+    };
+    dispatch(createOrderAsync(order));
+  };
   return (
     <>
       {items.length < 1 && <Navigate to="/" replace={true}></Navigate>}
-
       <div className="mx-auto  max-w-7xl px-4 sm:px-6 lg:px-8 ">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
-            <form className="bg-white px-5 mt-20 mb-10 py-3">
+            <form
+              className="bg-white px-5 mt-20 mb-10 py-3"
+              noValidate
+              onSubmit={handleSubmit((data) => {
+                console.log(data);
+                dispatch(
+                  updateUserAsync({
+                    ...user,
+                    addresses: [...user.addresses, data],
+                  })
+                );
+                reset();
+              })}
+            >
               <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
                   <h1 className="text-4xl font-bold tracking-tight text-gray-900">
@@ -68,41 +87,25 @@ function CheckOutPage() {
                     <div className="sm:col-span-3">
                       <div className="flex items-center justify-between">
                         <label
-                          htmlFor="first-name"
+                          htmlFor="name"
                           className="block text-sm font-medium leading-6 text-gray-900"
                         >
-                          First name
+                          Full Name
                         </label>
                       </div>
                       <div className="mt-2">
                         <input
                           type="text"
-                          name="first-name"
-                          id="first-name"
+                          {...register("name", {
+                            required: "Name is required",
+                          })}
+                          id="name"
                           autoComplete="given-name"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
-                    <div className="sm:col-span-3">
-                      <div className="flex items-center justify-between">
-                        <label
-                          htmlFor="last-name"
-                          className="block text-sm font-medium leading-6 text-gray-900"
-                        >
-                          Last name
-                        </label>
-                      </div>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="last-name"
-                          id="last-name"
-                          autoComplete="family-name"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                      </div>
-                    </div>
+
                     <div className="sm:col-span-4">
                       <div className="flex items-center justify-between">
                         <label
@@ -115,7 +118,9 @@ function CheckOutPage() {
                       <div className="mt-2">
                         <input
                           id="email"
-                          name="email"
+                          {...register("email", {
+                            required: "Email is required",
+                          })}
                           type="email"
                           autoComplete="email"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -125,39 +130,42 @@ function CheckOutPage() {
                     <div className="sm:col-span-3">
                       <div className="flex items-center justify-between">
                         <label
-                          htmlFor="country"
+                          htmlFor="phone"
                           className="block text-sm font-medium leading-6 text-gray-900"
                         >
-                          Country
+                          Phone
                         </label>
                       </div>
                       <div className="mt-2">
-                        <select
-                          id="country"
-                          name="country"
-                          autoComplete="country-name"
+                        <input
+                          id="phone"
+                          {...register("phone", {
+                            required: "phone is required",
+                          })}
+                          type="tel"
+                          autoComplete="phone"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                        >
-                          <option>India</option>
-                        </select>
+                        />
                       </div>
                     </div>
 
                     <div className="col-span-full">
                       <div className="flex items-center justify-between">
                         <label
-                          htmlFor="street-address"
+                          htmlFor="address"
                           className="block text-sm font-medium leading-6 text-gray-900"
                         >
-                          Street address
+                          Address
                         </label>
                       </div>
                       <div className="mt-2">
                         <input
                           type="text"
-                          name="street-address"
-                          id="street-address"
-                          autoComplete="street-address"
+                          {...register("address", {
+                            required: "Address is required",
+                          })}
+                          id="address"
+                          autoComplete="address"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
@@ -175,7 +183,9 @@ function CheckOutPage() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          name="city"
+                          {...register("city", {
+                            required: "city is required",
+                          })}
                           id="city"
                           autoComplete="address-level2"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -186,7 +196,7 @@ function CheckOutPage() {
                     <div className="sm:col-span-2">
                       <div className="flex items-center justify-between">
                         <label
-                          htmlFor="region"
+                          htmlFor="state"
                           className="block text-sm font-medium leading-6 text-gray-900"
                         >
                           State / Province
@@ -195,8 +205,10 @@ function CheckOutPage() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          name="region"
-                          id="region"
+                          {...register("state", {
+                            required: "state is required",
+                          })}
+                          id="state"
                           autoComplete="address-level1"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
@@ -206,18 +218,20 @@ function CheckOutPage() {
                     <div className="sm:col-span-2">
                       <div className="flex items-center justify-between">
                         <label
-                          htmlFor="postal-code"
+                          htmlFor="pinCode"
                           className="block text-sm font-medium leading-6 text-gray-900"
                         >
-                          ZIP / Postal code
+                          Pin code
                         </label>
                       </div>
                       <div className="mt-2">
                         <input
                           type="text"
-                          name="postal-code"
-                          id="postal-code"
-                          autoComplete="postal-code"
+                          {...register("pinCode", {
+                            required: "pinCode is required",
+                          })}
+                          id="pinCode"
+                          autoComplete="pinCode"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
@@ -253,13 +267,20 @@ function CheckOutPage() {
                   </div>
                   <>
                     <ul role="list">
-                      {addresses.map((address) => (
+                      {user.addresses.map((address, index) => (
                         <li
-                          //   key={address.email}
+                          key={index}
                           className="flex justify-between gap-x-6 py-5 border-solid border-2 rounded-md border-gray-200 px-5"
                         >
                           <div className="flex min-w-0 gap-x-4">
                             <input
+                              value={index}
+                              onChange={(e) => {
+                                console.log(e.target.value);
+                                setSelectedAddress(
+                                  user.addresses[e.target.value]
+                                );
+                              }}
                               id="card"
                               name="address"
                               type="radio"
@@ -305,22 +326,14 @@ function CheckOutPage() {
                       <div className="mt-6 space-y-6">
                         <div className="flex items-center gap-x-3">
                           <input
-                            id="cod"
-                            name="payments"
-                            type="radio"
-                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                          />
-                          <label
-                            htmlFor="cod"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Cash on Delivery
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-3">
-                          <input
                             id="card"
                             name="payments"
+                            value={"card"}
+                            checked={paymentMethod === "card"}
+                            onChange={(e) => {
+                              console.log(e.target.value);
+                              setPaymentMethod(e.target.value);
+                            }}
                             type="radio"
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
@@ -329,6 +342,26 @@ function CheckOutPage() {
                             className="block text-sm font-medium leading-6 text-gray-900"
                           >
                             Card Payment(Debit/Credit)
+                          </label>
+                        </div>
+                        <div className="flex items-center gap-x-3">
+                          <input
+                            id="cash"
+                            value={"cash"}
+                            checked={paymentMethod === "cash"}
+                            onChange={(e) => {
+                              console.log(e.target.value);
+                              setPaymentMethod(e.target.value);
+                            }}
+                            name="payments"
+                            type="radio"
+                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                          />
+                          <label
+                            htmlFor="cash"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Cash on Delivery
                           </label>
                         </div>
                       </div>
@@ -418,12 +451,12 @@ function CheckOutPage() {
                   Shipping and taxes calculated at checkout.
                 </p>
                 <div className="mt-6">
-                  <Link
-                    to="/checkout"
-                    className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                  <div
+                    onClick={handleOrder}
+                    className="cursor-pointer flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                   >
-                    Checkout
-                  </Link>
+                    Pay Now
+                  </div>
                 </div>
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                   <p>
