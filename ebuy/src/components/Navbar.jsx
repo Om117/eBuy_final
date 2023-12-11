@@ -25,7 +25,7 @@ const navigation = [
   { name: "Complaints", to: "/", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", link: "#" },
+  { name: "Your Profile", link: "/profile" },
   { name: "Your Faviorites", link: "#" },
   { name: "Settings", link: "#" },
   { name: "Sign out", link: "/login" },
