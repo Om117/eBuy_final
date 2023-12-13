@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, incrementAsync, selectCount } from "./DemoSlice";
+import { fetchLoggedInUserAsync } from "./UserSlice";
 
-export default function Counter() {
-  const count = useSelector(selectCount);
+export default function User() {
+  const count = useSelector();
   const dispatch = useDispatch();
 
   return (

@@ -99,12 +99,12 @@ export default function Cart() {
 
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
           <div className="flex justify-between text-base font-medium text-gray-900">
-            <p>Subtotal</p>
-            <p>₹ {totalAmount * 83}</p>
-          </div>
-          <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Total Items</p>
             <p> {totalItems}</p>
+          </div>
+          <div className="flex justify-between text-base font-medium text-gray-900">
+            <p>Subtotal</p>
+            <p>₹ {totalAmount * 83}</p>
           </div>
           <p className="mt-0.5 text-sm text-gray-500">
             Shipping and taxes calculated at checkout.
@@ -119,7 +119,7 @@ export default function Cart() {
           </div>
           <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
             <p>
-              or
+              or{" "}
               <Link to="/">
                 <button
                   type="button"

@@ -2360,28 +2360,7 @@
       "id": 2
     }
   ],
-  "cart": [
-    {
-      "title": "MacBook Pro",
-      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-      "price": 1749,
-      "discountPercentage": 11.02,
-      "rating": 4.57,
-      "stock": 83,
-      "brand": "Apple",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-      "images": [
-        "https://i.dummyjson.com/data/products/6/1.png",
-        "https://i.dummyjson.com/data/products/6/2.jpg",
-        "https://i.dummyjson.com/data/products/6/3.png",
-        "https://i.dummyjson.com/data/products/6/4.jpg"
-      ],
-      "quantity": 1,
-      "user": 1,
-      "id": 1
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "items": [
@@ -2466,6 +2445,81 @@
       "paymentMethod": "card",
       "status": "pending",
       "id": 1
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        },
+        {
+          "title": "Sofa for Coffe Cafe",
+          "description": "Ratttan Outdoor furniture Set Waterproof  Rattan Sofa for Coffe Cafe",
+          "price": 50,
+          "discountPercentage": 15.59,
+          "rating": 4.74,
+          "stock": 30,
+          "brand": "Ratttan Outdoor",
+          "category": "furniture",
+          "thumbnail": "https://i.dummyjson.com/data/products/32/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/32/1.jpg",
+            "https://i.dummyjson.com/data/products/32/2.jpg",
+            "https://i.dummyjson.com/data/products/32/3.jpg",
+            "https://i.dummyjson.com/data/products/32/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 949,
+      "totalItems": 2,
+      "user": {
+        "email": "test@gmail.com",
+        "password": "123",
+        "name": "test",
+        "addresses": [
+          {
+            "name": "test",
+            "email": "test@gmail.com",
+            "phone": "1111111111",
+            "address": "somewhere in World",
+            "city": "Ground",
+            "state": "Earth",
+            "pinCode": "007"
+          }
+        ],
+        "id": 1
+      },
+      "selectedAddress": {
+        "name": "test",
+        "email": "test@gmail.com",
+        "phone": "1111111111",
+        "address": "somewhere in World",
+        "city": "Ground",
+        "state": "Earth",
+        "pinCode": "007"
+      },
+      "paymentMethod": "cash",
+      "status": "pending",
+      "id": 2
     }
   ]
 }
