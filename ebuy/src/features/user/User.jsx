@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchLoggedInUserAsync } from "./UserSlice";
+import { fetchLoggedInUserOrdesrAsync } from "./UserSlice";
 
 export default function User() {
   const count = useSelector();
