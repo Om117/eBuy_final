@@ -308,10 +308,10 @@ function CheckOutPage() {
                           {address.name}
                         </p>
                         <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                          {address.city}
+                          {address.street}
                         </p>
-                        <p className="text-sm leading-6 text-gray-900">
-                          {address.state}
+                        <p className="text-sm leading-6 text-gray-500">
+                          {address.city}
                         </p>
                       </div>
                     </div>
@@ -319,8 +319,9 @@ function CheckOutPage() {
                       <p className="text-sm leading-6 text-gray-900">
                         Phone: {address.phone}
                       </p>
-                      <p className="text-sm leading-6 text-gray-500">
-                        {address.city}
+
+                      <p className="text-sm leading-6 text-gray-900">
+                        {address.state}
                       </p>
                     </div>
                   </li>

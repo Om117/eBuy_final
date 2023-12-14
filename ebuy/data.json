@@ -2343,11 +2343,11 @@
         {
           "name": "test",
           "email": "test@gmail.com",
-          "phone": "1111111111",
-          "address": "somewhere in World",
           "city": "Ground",
           "state": "Earth",
-          "pinCode": "007"
+          "pinCode": "007",
+          "phone": "1111111111",
+          "street": "mars"
         }
       ],
       "id": 1
@@ -2520,6 +2520,137 @@
       "paymentMethod": "cash",
       "status": "pending",
       "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        },
+        {
+          "title": "FREE FIRE T Shirt",
+          "description": "quality and professional print - It doesn't just look high quality, it is high quality.",
+          "price": 10,
+          "discountPercentage": 14.72,
+          "rating": 4.52,
+          "stock": 128,
+          "brand": "FREE FIRE",
+          "category": "mens-shirts",
+          "thumbnail": "https://i.dummyjson.com/data/products/52/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/52/1.png",
+            "https://i.dummyjson.com/data/products/52/2.png",
+            "https://i.dummyjson.com/data/products/52/3.jpg",
+            "https://i.dummyjson.com/data/products/52/4.jpg",
+            "https://i.dummyjson.com/data/products/52/thumbnail.jpg"
+          ],
+          "quantity": 5,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 949,
+      "totalItems": 6,
+      "user": {
+        "email": "test@gmail.com",
+        "password": "123",
+        "name": "test",
+        "addresses": [
+          {
+            "name": "test",
+            "email": "test@gmail.com",
+            "phone": "1111111111",
+            "address": "somewhere in World",
+            "city": "Ground",
+            "state": "Earth",
+            "pinCode": "007"
+          }
+        ],
+        "id": 1
+      },
+      "selectedAddress": {
+        "name": "test",
+        "email": "test@gmail.com",
+        "phone": "1111111111",
+        "address": "somewhere in World",
+        "city": "Ground",
+        "state": "Earth",
+        "pinCode": "007"
+      },
+      "paymentMethod": "card",
+      "status": "pending",
+      "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "user": {
+        "email": "test@gmail.com",
+        "password": "123",
+        "name": "test",
+        "addresses": [
+          {
+            "name": "test",
+            "email": "test@gmail.com",
+            "city": "Ground",
+            "state": "Earth",
+            "pinCode": "007",
+            "phone": "1111111111",
+            "street": "some where in world"
+          }
+        ],
+        "id": 1
+      },
+      "selectedAddress": {
+        "name": "test",
+        "email": "test@gmail.com",
+        "city": "Ground",
+        "state": "Earth",
+        "pinCode": "007",
+        "phone": "1111111111",
+        "street": "some where in world"
+      },
+      "paymentMethod": "card",
+      "status": "pending",
+      "id": 4
     }
   ]
 }

@@ -43,3 +43,11 @@ export function updateUser(update) {
     resolve({ data });
   });
 }
+
+export function signOut(userId) {
+  return new Promise(async (resolve) => {
+
+    // TODO: on server it will only return some info of user (not password)
+    resolve({ data: 'success' });
+  });
+}

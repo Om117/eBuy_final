@@ -25,10 +25,9 @@ const navigation = [
   { name: "Complaints", to: "/", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", link: "/profile" },
-  { name: "Your Orders", link: "/myorders" },
-  { name: "Settings", link: "#" },
-  { name: "Sign out", link: "/login" },
+  { name: "My Profile", link: "/profile" },
+  { name: "My Orders", link: "/myorders" },
+  { name: "Log out", link: "/logout" },
 ];
 
 function classNames(...classes) {
