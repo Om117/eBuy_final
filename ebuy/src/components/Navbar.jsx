@@ -1,4 +1,4 @@
-import { Children, Fragment } from "react";
+import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import logo from "../images/eBuyNav.png";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -12,7 +12,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectItems } from "../features/cart/CartSlice";
-import { selectLoggedInUser } from "../features/auth/AuthSlice";
 import { selectUserInfo } from "../features/user/UserSlice";
 
 // const user = {
@@ -27,9 +26,10 @@ const navigation = [
   { name: "Complaints", to: "/", current: false },
 ];
 const userNavigation = [
-  { name: "My Profile", link: "/profile" },
-  { name: "My Orders", link: "/myorders" },
-  { name: "Log out", link: "/logout" },
+  { name: "My Profile", link: "/profile", user: true, admin: true },
+  { name: "My Orders", link: "/myorders", user: true, admin: true },
+  { name: "Admin", link: "/admin", admin: true },
+  { name: "Log out", link: "/logout", user: true, admin: true },
 ];
 
 function classNames(...classes) {
@@ -172,21 +172,23 @@ function Navbar({ children }) {
                           >
                             <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                               <div className="py-1">
-                                {userNavigation.map((item) => (
-                                  <Menu.Item key={item.name}>
-                                    {({ active }) => (
-                                      <Link
-                                        to={item.link}
-                                        className={classNames(
-                                          active ? "bg-gray-100" : "",
-                                          "block px-4 py-2 text-sm text-gray-700"
-                                        )}
-                                      >
-                                        {item.name}
-                                      </Link>
-                                    )}
-                                  </Menu.Item>
-                                ))}
+                                {userNavigation.map((item) =>
+                                  item[user.role] ? (
+                                    <Menu.Item key={item.name}>
+                                      {({ active }) => (
+                                        <Link
+                                          to={item.link}
+                                          className={classNames(
+                                            active ? "bg-gray-100" : "",
+                                            "block px-4 py-2 text-sm text-gray-700"
+                                          )}
+                                        >
+                                          {item.name}
+                                        </Link>
+                                      )}
+                                    </Menu.Item>
+                                  ) : null
+                                )}
                               </div>
                             </Menu.Items>
                           </Transition>
@@ -226,20 +228,21 @@ function Navbar({ children }) {
               <Disclosure.Panel className="md:hidden text-center ">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                   {navigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        "block rounded-md px-3 py-2 text-base font-medium "
-                      )}
-                      aria-current={item.current ? "page" : undefined}
-                    >
-                      {item.name}
-                    </Disclosure.Button>
+                    <Link to={item.to}>
+                      <Disclosure.Button
+                        key={item.name}
+                        as="a"
+                        className={classNames(
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "block rounded-md px-3 py-2 text-base font-medium "
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </Disclosure.Button>
+                    </Link>
                   ))}
                 </div>
                 {user ? (
@@ -271,17 +274,19 @@ function Navbar({ children }) {
                       </span>
                     </div>
                     <div className="mt-3 space-y-1 px-2">
-                      {userNavigation.map((item) => (
-                        <Link to={item.link}>
-                          <Disclosure.Button
-                            key={item.name}
-                            as="a"
-                            className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                          >
-                            {item.name}
-                          </Disclosure.Button>
-                        </Link>
-                      ))}
+                      {userNavigation.map((item) =>
+                        item[user.role] ? (
+                          <Link to={item.link}>
+                            <Disclosure.Button
+                              key={item.name}
+                              as="a"
+                              className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                            >
+                              {item.name}
+                            </Disclosure.Button>
+                          </Link>
+                        ) : null
+                      )}
                     </div>
                   </div>
                 ) : (

@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+ebuy/data.json
 # production
 /build
 

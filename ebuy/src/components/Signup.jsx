@@ -45,6 +45,7 @@ function Signup() {
                   password: data.password,
                   name: data.name,
                   addresses: [],
+                  role: "user",
                 })
               );
               console.log(data);
