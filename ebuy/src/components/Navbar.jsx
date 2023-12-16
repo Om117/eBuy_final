@@ -29,6 +29,7 @@ const userNavigation = [
   { name: "My Profile", link: "/profile", user: true, admin: true },
   { name: "My Orders", link: "/myorders", user: true, admin: true },
   { name: "Admin", link: "/admin", admin: true },
+  { name: "Admin Orders", link: "/admin/admin-orders", admin: true },
   { name: "Log out", link: "/logout", user: true, admin: true },
 ];
 
@@ -38,7 +39,9 @@ function classNames(...classes) {
 function Navbar({ children }) {
   const items = useSelector(selectItems);
   const user = useSelector(selectUserInfo);
-
+  const logmeout = () => {
+    window.location.reload();
+  };
   return (
     <>
       <div className="min-h-full">
@@ -174,20 +177,24 @@ function Navbar({ children }) {
                               <div className="py-1">
                                 {userNavigation.map((item) =>
                                   item[user.role] ? (
+                                    // item.name == "Log out" ? (
+                                    //   <div
+                                    //     onClick={logmeout}
+                                    //     className="block px-4 py-2 text-sm text-gray-700"
+                                    //   >
+                                    //     {item.name}
+                                    //   </div>
+                                    // ) : (
                                     <Menu.Item key={item.name}>
-                                      {({ active }) => (
-                                        <Link
-                                          to={item.link}
-                                          className={classNames(
-                                            active ? "bg-gray-100" : "",
-                                            "block px-4 py-2 text-sm text-gray-700"
-                                          )}
-                                        >
-                                          {item.name}
-                                        </Link>
-                                      )}
+                                      <Link
+                                        to={item.link}
+                                        className="block px-4 py-2 text-sm text-gray-700"
+                                      >
+                                        {item.name}
+                                      </Link>
                                     </Menu.Item>
-                                  ) : null
+                                  ) : // )
+                                  null
                                 )}
                               </div>
                             </Menu.Items>

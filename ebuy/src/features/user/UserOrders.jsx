@@ -37,6 +37,9 @@ export default function UserOrders() {
                                 Product name
                               </th>
                               <th scope="col" class="px-6 py-3">
+                                Photo
+                              </th>
+                              <th scope="col" class="px-6 py-3">
                                 Quantity
                               </th>
                               <th scope="col" class="px-6 py-3">
@@ -44,9 +47,6 @@ export default function UserOrders() {
                               </th>
                               <th scope="col" class="px-6 py-3">
                                 Price
-                              </th>
-                              <th scope="col" class="px-6 py-3">
-                                Action
                               </th>
                             </tr>
                           </thead>
@@ -59,17 +59,15 @@ export default function UserOrders() {
                                 >
                                   {item.title}
                                 </th>
+                                <td class="px-6 py-4">
+                                  <img
+                                    src={item.thumbnail}
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-1/2"
+                                  />
+                                </td>
                                 <td class="px-6 py-4">{item.quantity}</td>
                                 <td class="px-6 py-4">{item.category}</td>
                                 <td class="px-6 py-4">₹ {item.price * 83}</td>
-                                <td class="px-6 py-4">
-                                  <a
-                                    href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                  >
-                                    Edit
-                                  </a>
-                                </td>
                               </tr>
                             </tbody>
                           ))}
@@ -112,7 +110,7 @@ export default function UserOrders() {
                   </div>
                   <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$ {order.totalAmount * 83}</p>
+                    <p>₹ {order.totalAmount * 83}</p>
                   </div>
                 </div>
               </div>

@@ -21,9 +21,9 @@
     },
     {
       "id": 2,
-      "title": "iPhone X",
+      "title": "IPHONE X",
       "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 849,
+      "price": 900,
       "discountPercentage": 17.94,
       "rating": "4.56",
       "stock": 30,
@@ -2400,36 +2400,44 @@
     {
       "email": "om@gmail.com",
       "password": "111",
-      "name": "om",
-      "addresses": [],
+      "name": "Om",
+      "addresses": [
+        {
+          "name": "om",
+          "email": "om@gmail.com",
+          "phone": "1111111111",
+          "address": "dholka,ahmedabad",
+          "city": "ahmedabad",
+          "state": "gujarat",
+          "pinCode": "123"
+        }
+      ],
       "role": "user",
       "id": 3
+    },
+    {
+      "email": "ok@gmail.com",
+      "password": "111",
+      "name": "ok",
+      "addresses": [
+        {
+          "name": "ok",
+          "email": "ok@gmail.com",
+          "phone": "123",
+          "address": "ok",
+          "city": "ok",
+          "state": "ok",
+          "pinCode": "0"
+        }
+      ],
+      "role": "user",
+      "id": 4
     }
   ],
   "cart": [],
   "orders": [
     {
       "items": [
-        {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 2,
-          "user": 1,
-          "id": 1
-        },
         {
           "title": "MacBook Pro",
           "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
@@ -2448,226 +2456,31 @@
           ],
           "quantity": 1,
           "user": 1,
-          "id": 2
-        }
-      ],
-      "totalAmount": 3547,
-      "totalItems": 3,
-      "user": {
-        "email": "test@gmail.com",
-        "password": "123",
-        "name": "test",
-        "addresses": [
-          {
-            "name": "test",
-            "email": "test@gmail.com",
-            "phone": "1111111111",
-            "address": "somewhere in World",
-            "city": "Ground",
-            "state": "Earth",
-            "pinCode": "007"
-          },
-          {
-            "name": "test11",
-            "email": "test@gmail.com",
-            "phone": "2222222222",
-            "address": "somewhere in World",
-            "city": "martian",
-            "state": "mars",
-            "pinCode": "123"
-          }
-        ],
-        "id": 1
-      },
-      "selectedAddress": {
-        "name": "test",
-        "email": "test@gmail.com",
-        "phone": "1111111111",
-        "address": "somewhere in World",
-        "city": "Ground",
-        "state": "Earth",
-        "pinCode": "007"
-      },
-      "paymentMethod": "card",
-      "status": "pending",
-      "id": 1
-    },
-    {
-      "items": [
-        {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
           "id": 1
         },
         {
-          "title": "Sofa for Coffe Cafe",
-          "description": "Ratttan Outdoor furniture Set Waterproof  Rattan Sofa for Coffe Cafe",
-          "price": 50,
-          "discountPercentage": 15.59,
-          "rating": 4.74,
+          "title": "IPHONE X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 900,
+          "discountPercentage": 17.94,
+          "rating": "4.56",
           "stock": 30,
-          "brand": "Ratttan Outdoor",
-          "category": "furniture",
-          "thumbnail": "https://i.dummyjson.com/data/products/32/thumbnail.jpg",
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
           "images": [
-            "https://i.dummyjson.com/data/products/32/1.jpg",
-            "https://i.dummyjson.com/data/products/32/2.jpg",
-            "https://i.dummyjson.com/data/products/32/3.jpg",
-            "https://i.dummyjson.com/data/products/32/thumbnail.jpg"
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
           ],
           "quantity": 1,
           "user": 1,
           "id": 2
         }
       ],
-      "totalAmount": 949,
+      "totalAmount": 2649,
       "totalItems": 2,
-      "user": {
-        "email": "test@gmail.com",
-        "password": "123",
-        "name": "test",
-        "addresses": [
-          {
-            "name": "test",
-            "email": "test@gmail.com",
-            "phone": "1111111111",
-            "address": "somewhere in World",
-            "city": "Ground",
-            "state": "Earth",
-            "pinCode": "007"
-          }
-        ],
-        "id": 1
-      },
-      "selectedAddress": {
-        "name": "test",
-        "email": "test@gmail.com",
-        "phone": "1111111111",
-        "address": "somewhere in World",
-        "city": "Ground",
-        "state": "Earth",
-        "pinCode": "007"
-      },
-      "paymentMethod": "cash",
-      "status": "pending",
-      "id": 2
-    },
-    {
-      "items": [
-        {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        },
-        {
-          "title": "FREE FIRE T Shirt",
-          "description": "quality and professional print - It doesn't just look high quality, it is high quality.",
-          "price": 10,
-          "discountPercentage": 14.72,
-          "rating": 4.52,
-          "stock": 128,
-          "brand": "FREE FIRE",
-          "category": "mens-shirts",
-          "thumbnail": "https://i.dummyjson.com/data/products/52/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/52/1.png",
-            "https://i.dummyjson.com/data/products/52/2.png",
-            "https://i.dummyjson.com/data/products/52/3.jpg",
-            "https://i.dummyjson.com/data/products/52/4.jpg",
-            "https://i.dummyjson.com/data/products/52/thumbnail.jpg"
-          ],
-          "quantity": 5,
-          "user": 1,
-          "id": 2
-        }
-      ],
-      "totalAmount": 949,
-      "totalItems": 6,
-      "user": {
-        "email": "test@gmail.com",
-        "password": "123",
-        "name": "test",
-        "addresses": [
-          {
-            "name": "test",
-            "email": "test@gmail.com",
-            "phone": "1111111111",
-            "address": "somewhere in World",
-            "city": "Ground",
-            "state": "Earth",
-            "pinCode": "007"
-          }
-        ],
-        "id": 1
-      },
-      "selectedAddress": {
-        "name": "test",
-        "email": "test@gmail.com",
-        "phone": "1111111111",
-        "address": "somewhere in World",
-        "city": "Ground",
-        "state": "Earth",
-        "pinCode": "007"
-      },
-      "paymentMethod": "card",
-      "status": "pending",
-      "id": 3
-    },
-    {
-      "items": [
-        {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        }
-      ],
-      "totalAmount": 899,
-      "totalItems": 1,
       "user": {
         "email": "test@gmail.com",
         "password": "123",
@@ -2680,9 +2493,10 @@
             "state": "Earth",
             "pinCode": "007",
             "phone": "1111111111",
-            "street": "some where in world"
+            "street": "mars"
           }
         ],
+        "role": "user",
         "id": 1
       },
       "selectedAddress": {
@@ -2692,11 +2506,123 @@
         "state": "Earth",
         "pinCode": "007",
         "phone": "1111111111",
-        "street": "some where in world"
+        "street": "mars"
+      },
+      "paymentMethod": "cash",
+      "status": "pending",
+      "id": 1
+    },
+    {
+      "items": [
+        {
+          "title": "Redragon K616 Fizz PRO",
+          "description": "Redragon K616 Fizz PRO 60% 3-Mode Wired, 2.4Ghz Wireless, Bluetooth Mechanical Gaming Keyboard, 61 Keys Compact w/Grey and White Colour Keycaps, Linear Red Switch, pro Drive/Software Supported",
+          "brand": "Best",
+          "category": "Computer-Accessories",
+          "price": 42,
+          "stock": 25,
+          "thumbnail": "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/51ykP2bfkfL._SX522_.jpg",
+          "images": [
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/51VzHhPRO4L._SX522_.jpg",
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/61f+PAV3hEL._SX522_.jpg",
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/61IORhsJACL._SX522_.jpg",
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/I/51ykP2bfkfL._SX522_.jpg"
+          ],
+          "rating": "4.98",
+          "quantity": 1,
+          "user": 3,
+          "id": 1
+        }
+      ],
+      "totalAmount": 42,
+      "totalItems": 1,
+      "user": {
+        "email": "om@gmail.com",
+        "password": "111",
+        "name": "Om",
+        "addresses": [
+          {
+            "name": "om",
+            "email": "om@gmail.com",
+            "phone": "1111111111",
+            "address": "dholka,ahmedabad",
+            "city": "ahmedabad",
+            "state": "gujarat",
+            "pinCode": "123"
+          }
+        ],
+        "role": "user",
+        "id": 3
+      },
+      "selectedAddress": {
+        "name": "om",
+        "email": "om@gmail.com",
+        "phone": "1111111111",
+        "address": "dholka,ahmedabad",
+        "city": "ahmedabad",
+        "state": "gujarat",
+        "pinCode": "123"
       },
       "paymentMethod": "card",
       "status": "pending",
-      "id": 4
+      "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "Mornadi Velvet Bed",
+          "description": "Mornadi Velvet Bed Base with Headboard Slats Support Classic Style Bedroom Furniture Bed Set",
+          "price": 40,
+          "discountPercentage": 17,
+          "rating": 4.16,
+          "stock": 140,
+          "brand": "Furniture Bed Set",
+          "category": "furniture",
+          "thumbnail": "https://i.dummyjson.com/data/products/31/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/31/1.jpg",
+            "https://i.dummyjson.com/data/products/31/2.jpg",
+            "https://i.dummyjson.com/data/products/31/3.jpg",
+            "https://i.dummyjson.com/data/products/31/4.jpg",
+            "https://i.dummyjson.com/data/products/31/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 4,
+          "id": 1
+        }
+      ],
+      "totalAmount": 40,
+      "totalItems": 1,
+      "user": {
+        "email": "ok@gmail.com",
+        "password": "111",
+        "name": "ok",
+        "addresses": [
+          {
+            "name": "ok",
+            "email": "ok@gmail.com",
+            "phone": "123",
+            "address": "ok",
+            "city": "ok",
+            "state": "ok",
+            "pinCode": "0"
+          }
+        ],
+        "role": "user",
+        "id": 4
+      },
+      "selectedAddress": {
+        "name": "ok",
+        "email": "ok@gmail.com",
+        "phone": "123",
+        "address": "ok",
+        "city": "ok",
+        "state": "ok",
+        "pinCode": "0"
+      },
+      "paymentMethod": "card",
+      "status": "dispatched",
+      "id": 3
     }
   ]
 }
