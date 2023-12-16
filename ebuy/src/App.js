@@ -33,6 +33,14 @@ import ProductForm from './features/admin/ProductForm';
 import AdminProductFormPage from './pages/AdminProductFormPage';
 import AdminOrdersPage from './pages/AdminOrdersPage';
 
+import { positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ComplaintsPage from './pages/ComplaintsPage';
+const options = {
+  timeout: 5000,
+  position: positions.BOTTOM_CENTER
+};
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,12 +55,20 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
+    path: "/forgot-password",
+    element: <ForgotPasswordPage />,
+  },
+  {
     path: "/signup",
     element: <SignupPage />,
   },
   {
     path: "/cart",
     element: <Protected><CartPage></CartPage></Protected>,
+  },
+  {
+    path: "/complaints",
+    element: <Protected><ComplaintsPage></ComplaintsPage></Protected>,
   },
   {
     path: "/checkout",
@@ -115,7 +131,9 @@ function App() {
   return (
     <div >
       {/* <LoginPage /> */}
-      <RouterProvider router={router} />
+      <Provider template={AlertTemplate} {...options}>
+        <RouterProvider router={router} />
+      </Provider>
       {/* <SignupPage /> */}
     </div>
   );

@@ -59,10 +59,10 @@ export default function UserOrders() {
                                 >
                                   {item.title}
                                 </th>
-                                <td class="px-6 py-4">
+                                <td class="px-5 py-4">
                                   <img
                                     src={item.thumbnail}
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline w-1/2"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline h-48 w-60"
                                   />
                                 </td>
                                 <td class="px-6 py-4">{item.quantity}</td>

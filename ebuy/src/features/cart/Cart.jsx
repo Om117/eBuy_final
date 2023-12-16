@@ -14,7 +14,6 @@ import { updateCartAsync } from "../cart/CartSlice";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(true);
 
   const items = useSelector(selectItems);
   const totalAmount = items.reduce(
@@ -33,6 +32,7 @@ export default function Cart() {
   return (
     <>
       {items.length < 1 && <Navigate to="/" replace={true}></Navigate>}
+
       <div className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8 bg-white">
         <h2 className="text-4xl font-bold tracking-tight text-gray-900">
           Your Cart

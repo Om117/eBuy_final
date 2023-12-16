@@ -23,7 +23,7 @@ import { selectUserInfo } from "../features/user/UserSlice";
 const navigation = [
   { name: "Home", to: "/", current: false },
   { name: "Trending", to: "/", current: false },
-  { name: "Complaints", to: "/", current: false },
+  { name: "Complaints", to: "/complaints", current: false },
 ];
 const userNavigation = [
   { name: "My Profile", link: "/profile", user: true, admin: true },
@@ -177,24 +177,26 @@ function Navbar({ children }) {
                               <div className="py-1">
                                 {userNavigation.map((item) =>
                                   item[user.role] ? (
-                                    // item.name == "Log out" ? (
-                                    //   <div
-                                    //     onClick={logmeout}
-                                    //     className="block px-4 py-2 text-sm text-gray-700"
-                                    //   >
-                                    //     {item.name}
-                                    //   </div>
-                                    // ) : (
-                                    <Menu.Item key={item.name}>
-                                      <Link
-                                        to={item.link}
-                                        className="block px-4 py-2 text-sm text-gray-700"
-                                      >
-                                        {item.name}
-                                      </Link>
-                                    </Menu.Item>
-                                  ) : // )
-                                  null
+                                    item.name == "Log out" ? (
+                                      <Menu.Item key={item.name}>
+                                        <a
+                                          href={item.link}
+                                          className="block px-4 py-2 text-sm text-gray-700"
+                                        >
+                                          {item.name}
+                                        </a>
+                                      </Menu.Item>
+                                    ) : (
+                                      <Menu.Item key={item.name}>
+                                        <Link
+                                          to={item.link}
+                                          className="block px-4 py-2 text-sm text-gray-700"
+                                        >
+                                          {item.name}
+                                        </Link>
+                                      </Menu.Item>
+                                    )
+                                  ) : null
                                 )}
                               </div>
                             </Menu.Items>

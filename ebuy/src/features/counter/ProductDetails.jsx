@@ -7,9 +7,9 @@ import {
   selectProductById,
 } from "./ProductListSlice";
 import { useParams } from "react-router-dom";
-import { addToCartAsync } from "../cart/CartSlice";
+import { addToCartAsync, selectItems } from "../cart/CartSlice";
+import { useAlert } from "react-alert";
 import { selectLoggedInUser } from "../auth/AuthSlice";
-
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
   { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
@@ -39,14 +39,28 @@ export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const product = useSelector(selectProductById);
+  const items = useSelector(selectItems);
+
+  const alert = useAlert();
+
   const dispatch = useDispatch();
   const params = useParams();
   const user = useSelector(selectLoggedInUser);
   const handleCart = (e) => {
     e.preventDefault();
-    let newItem = { ...product, quantity: 1, user: user.id };
-    delete newItem["id"];
-    dispatch(addToCartAsync(newItem));
+    if (items.findIndex((item) => item.productId === product.id)) {
+      let newItem = {
+        ...product,
+        productId: product.id,
+        quantity: 1,
+        user: user.id,
+      };
+      delete newItem["id"];
+      dispatch(addToCartAsync(newItem));
+      alert.success("Item Added in Cart Successfully");
+    } else {
+      alert.error("Item already Exists in cart");
+    }
   };
 
   useEffect(() => {
