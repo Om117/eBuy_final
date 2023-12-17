@@ -121,7 +121,6 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
 
-
   useEffect(() => {
     if (user) {
       dispatch(fetchItemsByUserIdAsync(user.id))

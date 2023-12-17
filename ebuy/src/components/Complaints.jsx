@@ -1,11 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectLoggedInUser } from "../features/auth/AuthSlice";
 
 function Complaints() {
+  const user = useSelector(selectLoggedInUser);
   return (
     <>
       <div className="flex items-center justify-center p-12">
         <div className="mx-auto w-full max-w-[550px]">
-          <form action="#" method="POST">
+          <form action="https://formspree.io/f/xayrwqka" method="POST">
             <div className="mb-5">
               <label
                 htmlFor="name"
@@ -30,10 +33,11 @@ function Complaints() {
               </label>
               <input
                 type="email"
+                value={user.email}
                 name="email"
                 id="email"
                 placeholder="example@domain.com"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-red-400 outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
             <div className="mb-5">
@@ -56,7 +60,7 @@ function Complaints() {
                 htmlFor="message"
                 className="mb-3 block text-base font-medium text-[#07074D]"
               >
-                Message
+                Message/Complaint:
               </label>
               <textarea
                 rows={4}
